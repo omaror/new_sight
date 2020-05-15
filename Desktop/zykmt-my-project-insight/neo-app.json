@@ -1,0 +1,66 @@
+{
+  "routes": [
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/http/API_MKT_INTERACTION_SRV/",
+      "target": {
+        "type": "destination",
+        "name": "CPI_INTERACTION"
+      },
+      "description": "CPI"
+    },
+    {
+      "path": "/http/API_MKT_CONTACT_SRV/",
+      "target": {
+        "type": "destination",
+        "name": "CPI_COUNT"
+      },
+      "description": "CPI"
+    },
+    {
+      "path": "/gw/odata/SAP/SCPYMKTCONTACTSODATA;v=1",
+      "target": {
+        "type": "destination",
+        "name": "CPI_CONTACT"
+      },
+      "description": "Contact CPI"
+    }
+  ],
+  "welcomeFile": "/webapp/index.html",
+  "sendWelcomeFileRedirect": true
+}

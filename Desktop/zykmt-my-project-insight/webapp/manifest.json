@@ -1,0 +1,203 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"resources": "resources.json",
+		"dataSources": {
+			"mainService": {
+				"uri": "/gw/odata/SAP/SCPYMKTCONTACTSODATA;v=1/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SCPYMKTCONTACTSODATA/metadata.xml"
+				}
+			},
+			"count": {
+				"uri": "/http/API_MKT_CONTACT_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/API_MKT_CONTACT_SRV/metadata.xml"
+				}
+			},
+			"interaction": {
+				"uri": "/http/API_MKT_INTERACTION_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/API_MKT_INTERACTION_SRV/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.66.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"useBatch": false,
+					"bundleName": "zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"useBatch": false,
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "mainService",
+				"preload": true
+			},
+			"interaction": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"useBatch": false,
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "interaction",
+				"preload": true
+			},
+			"count": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"useBatch": false,
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "count",
+				"preload": true
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "worklist",
+					"target": [
+						"worklist"
+					]
+				},
+				{
+					"pattern": "MCUID/{objectId}",
+					"name": "object",
+					"target": [
+						"object"
+					]
+				},
+				{
+					"pattern": "CRMID/{contactId}",
+					"name": "contactObject",
+					"target": [
+						"contactObject"
+					]
+				},
+				{
+					"pattern": "Interaction/{interactionUUID}",
+					"name": "interactionDetail",
+					"target": [
+						"interactionDetail"
+					]
+				}
+			],
+			"targets": {
+				"worklist": {
+					"viewName": "Worklist",
+					"viewId": "worklist",
+					"viewLevel": 1,
+					"title": "{i18n>worklistViewTitle}"
+				},
+				"object": {
+					"viewName": "Object",
+					"viewId": "object",
+					"viewLevel": 2,
+					"title": "{i18n>objectViewTitle}"
+				},
+				"contactObject": {
+					"viewName": "ContactObject",
+					"viewId": "contactObject",
+					"viewLevel": 2,
+					"title": "{i18n>objectViewTitle}"
+				},
+				"objectNotFound": {
+					"viewName": "ObjectNotFound",
+					"viewId": "objectNotFound"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				},
+				"interactionDetail": {
+					"viewName": "InteractionDetail",
+					"viewId": "interactionDetail",
+					"viewLevel": 2,
+					"title": "{i18n>objectViewTitle}"
+				}
+			}
+		},
+		"flexEnabled": true
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

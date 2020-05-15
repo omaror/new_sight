@@ -1,0 +1,72 @@
+<mvc:View controllerName="zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:MasterPage id="page" title="{masterView>/title}" navButtonPress="onNavBack" showNavButton="false">
+		<semantic:subHeader>
+			<Bar id="headerBar">
+				<contentMiddle>
+					<SearchField id="searchField" showRefreshButton="{= !${device>/support/touch} }" tooltip="{i18n>masterSearchTooltip}" width="100%"
+						search="onfilterSearch"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</semantic:subHeader>
+		<semantic:content>
+			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
+			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
+			<List id="list" noDataText="{masterView>/noDataText}" enableBusyIndicator="true"
+		
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" 
+				updateStarted="oListupdateStarted" updateFinished="onUpdateFinished" selectionChange=".onPress">
+				<infoToolbar>
+					<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
+					</Toolbar>
+				</infoToolbar>
+				<items>
+					<CustomListItem id="columnListItem" type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press=".onPress">
+						<HBox id="hBox" width="100%" fitContainer="true">
+							<FlexBox id="flexBox" width="100%" alignItems="Start" class="sapUiTinyMargin">
+								<items>
+									<VBox id="vBox" width="80%">
+										<Link id="crmId" text="SAP CRM ID:{ parts: [{ path: 'ContactUUID' }, { path: 'LastChangedByUser' }] , formatter: '.formatter.getCRMID'}"
+											press="contactDirectionUrl"/>
+										<Text text=""/>
+										<ObjectIdentifier title="{FullName}" text="" titleActive="false"/>
+										<Text text=""/>
+										<Link id="mcUIId" text="MC UID:{path: 'ContactUUID', formatter: '.formatter.UUIDFormatter'}" press="directionUrl"/>
+										<Text text=""/>
+										<Label text="{EmailAddress}"/>
+										<layoutData>
+											<FlexItemData growFactor="3"/>
+										</layoutData>
+									</VBox>
+									<VBox width="100px" class="sapUiTinyMarginBegin">
+										<items>
+											<Label text=""/>
+											<Label text=""/>
+											<Label text=""/>
+											<Label text=""/>
+											<ObjectStatus text="{CountryName}" state="Error"/>
+										</items>
+										<layoutData>
+											<FlexItemData growFactor="1"/>
+										</layoutData>
+									</VBox>
+								</items>
+							</FlexBox>
+						</HBox>
+					</CustomListItem>
+				</items>
+				<swipeContent>
+					<Button id="approveButton" icon="sap-icon://arrow-down" press="handleApprove"/>
+				</swipeContent>
+				<swipeContent>
+					<Button id="approveTouchButton" text="Touch to Approve" type="Accept" press="handleApprove" width="50%"/>
+				</swipeContent>
+			</List>
+		</semantic:content>
+		<semantic:addAction></semantic:addAction>
+		<semantic:filter>
+			<semantic:FilterAction id="viewSetting" press="onOpenViewSettings"/>
+		</semantic:filter>
+	</semantic:MasterPage>
+</mvc:View>

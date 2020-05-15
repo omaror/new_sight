@@ -1,0 +1,54 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m"
+	controllerName="zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT.controller.InteractionDetail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:DetailPage showNavButton="true" id="page" navButtonPress="onNavBack" title="Interaction Detail" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+				<f:content>
+					<Label text="Interaction Type"/>
+					<Text id="InteractionType" text="{InteractionType}"/>
+					<Label text="Interaction Timestamp"/>
+					<Text id="InteractionTimeStampUTC" text="{path: 'InteractionTimeStampUTC', formatter: '.formatter.dateFormatter'}"/>
+					<Label text="Project Name"/>
+					<Text   id="YY1_OPP_PROJECT_NAME_MIA"  text="{YY1_OPP_PROJECT_NAME_MIA}"/>
+					<Label text="Country"/>
+					<Text  id="YY1_OPP_PROJECT_COUNTR_MIAT"  text="{YY1_OPP_PROJECT_COUNTR_MIAT}"/>
+					<Label text="City"/>
+					<Text  id="YY1_OPP_PROJECT_CITY_MIA"  text="{YY1_OPP_PROJECT_CITY_MIA}"/>
+					<Label text="Postal Code"/>
+					<Text  id="YY1_OPP_PROJECT_POSTAL_MIA"  text="{YY1_OPP_PROJECT_POSTAL_MIA}"/>
+					<Label text="Project Category"/>
+					<Text  id="YY1_OPP_PROJECT_CATEGO_MIAT"  text="{YY1_OPP_PROJECT_CATEGO_MIAT}"/>
+					<Label text="Project Type"/>
+					<Text  id="YY1_OPP_PROJECT_TYPE_MIAT"  text="{YY1_OPP_PROJECT_TYPE_MIAT}"/>
+					<Label text="Start Periode"/>
+					<Text  id="YY1_OPP_PROJECT_STARTP_MIAT"  text="{YY1_OPP_PROJECT_STARTP_MIAT}"/>
+					<Label text="Project Size"/>
+					<Text  id="YY1_OPP_PROJECT_SIZE_MIAT" text="{YY1_OPP_PROJECT_SIZE_MIAT}"/>
+					<Label text="Number Buildings"/>
+					<Text  id="YY1_OPP_PROJECT_BUILD_MIA" text="{YY1_OPP_PROJECT_BUILD_MIA}"/>
+					<Label text="Number of Floors"/>
+					<Text  id="YY1_OPP_PROJECT_FLOORS_MIA" text="{YY1_OPP_PROJECT_FLOORS_MIA}"/>
+					<Label text="Number of Units"/>
+					<Text  id="YY1_OPP_PROJECT_UNITS_MIA" text="{YY1_OPP_PROJECT_UNITS_MIA}"/>
+					<Label text="Building Type"/>
+					<Text  id="YY1_OPP_TYPE_MIAT" text="{YY1_OPP_TYPE_MIAT}"/>
+					<Label text="Energy Ambition Level"/>
+					<Text  id="YY1_OPP_ENERG_LEVEL_MIAT" text="{YY1_OPP_ENERG_LEVEL_MIAT}"/>
+					<Label text="Project Phase"/>
+					<Text  id="YY1_OPP_CURR_PHASE_MIAT" text="{YY1_OPP_CURR_PHASE_MIAT}"/>
+					<Label text="Source Data URL"/>
+					<Link  id="InteractionSourceDataURL" text="{InteractionSourceDataURL}" press="directionUrl"/>
+				</f:content>
+			</f:SimpleForm>
+			<!-- account, contact and employee responsible-->
+		</semantic:content>
+		<!--<semantic:messagesIndicator>-->
+		<!--	<semantic:MessagesIndicator press="onMessagesButtonPress" visible="true"/>-->
+		<!--</semantic:messagesIndicator>-->
+		<!--<semantic:cancelAction>-->
+		<!--	<semantic:CancelAction id="cancel" press="onCancel"/>-->
+		<!--</semantic:cancelAction>-->
+	</semantic:DetailPage>
+</mvc:View>

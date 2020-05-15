@@ -1,0 +1,87 @@
+<mvc:View controllerName="zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT.controller.ContactObject" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:ui="sap.ui.layout">
+	<semantic:DetailPage id="page" showNavButton="false" title="Contact Details" navButtonPress="onNavBack" busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<ObjectHeader id="headerInfo" title="Contact Name: {FirstName} {LastName}">
+				<attributes>
+					<ObjectAttribute id="MCUIDTextId" text="SAP MC UID: {path: 'ContactUUID', formatter: '.formatter.UUIDFormatter'}"/>
+					<ObjectAttribute id="contactTextId"/>
+					<ObjectAttribute id="corrAcctNameTextId" text="Corporate Account Name: {CorporateAccountName}"/>
+				</attributes>
+			</ObjectHeader>
+			<IconTabBar id="idIconTabBar" select="handleIconTabBarSelect" class="sapUiResponsiveContentPadding" expanded="true">
+				<items>
+					<IconTabFilter icon="sap-icon://capital-projects" iconColor="Positive" key="Ok">
+						<Table id="lineItemsList" width="auto" items="{objectModel>Interactions}" updateFinished="onListUpdateFinished" mode="MultiSelect"
+							noDataText="{i18n>detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin">
+							<headerToolbar>
+								<Toolbar>
+									<ToolbarSpacer></ToolbarSpacer>
+									<!--<Button tooltip="View Settings" icon="sap-icon://add" press="handleViewSettingsDialogButtonPressed"/>-->
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column width="25%">
+									<Text text="Interaction Type"/>
+								</Column>
+								<Column width="24%">
+									<Text text="Interaction Timestamp"/>
+								</Column>
+								<Column width="10%">
+									<Text text="Size"/>
+								</Column>
+								<Column width="15%">
+									<Text text="Location"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="columnListItem" type="Navigation" press="handleListItemPress">
+									<cells>
+										<Text text="{InteractionType}"/>
+										<Text text="{path: 'InteractionTimeStampUTC', formatter: '.formatter.dateFormatter'}"/>
+										<Text text="{MarketingLocation}"/>
+										<Text text="{MarketingLocation}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+					<IconTabSeparator/>
+					<IconTabFilter id="iconTabBarFilter1" key="GeneralData" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+						<ui:form.SimpleForm id="headerDetail" layout="ResponsiveGridLayout" title="General Information">
+							<ui:content>
+								<Label id="contactPerson" text="Email"></Label>
+								<Text id="ConcDesc" text="{EmailAddress}"></Text>
+								<Label id="status" text="Street"></Label>
+								<Text id="statusDesc" text="{StreetName}"></Text>
+								<Label id="statusReason" text="House Number"></Label>
+								<Text id="statusReasonDesc" text="{AddressHouseNumber}"></Text>
+								<Label id="employeeResp" text="Postal Code"></Label>
+								<Text id="employeeRespDesc" text="{ContactPostalCode}"></Text>
+								<Label id="createdOn" text="Country"></Label>
+								<Text text="{CountryName}"/>
+							</ui:content>
+						</ui:form.SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<!--<semantic:customFooterContent>-->
+		<!--	<Button text="Create Lead" press="create Lead" type="Emphasized"/>-->
+		<!--	<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Ghost" press="handleMessageViewPress"/>-->
+		<!--</semantic:customFooterContent>-->
+		<!--<semantic:editAction>-->
+		<!--	<semantic:EditAction id="edit" press="onEdit"/>-->
+		<!--</semantic:editAction>-->
+		<!--<semantic:sendEmailAction>-->
+		<!--	<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>-->
+		<!--</semantic:sendEmailAction>-->
+		<!--<semantic:shareInJamAction>-->
+		<!--	<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>-->
+		<!--</semantic:shareInJamAction>-->
+		<!--<semantic:saveAsTileAction>-->
+		<!--	<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>-->
+		<!--</semantic:saveAsTileAction>-->
+	</semantic:DetailPage>
+</mvc:View>

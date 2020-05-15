@@ -1,0 +1,12 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+		<ViewSettingsDialog
+		confirm="onFilterPress">
+		<sortItems>
+			<ViewSettingsItem text="All Contacts" key="1" selected="true" />
+			<ViewSettingsItem text="All Contacts with Project Information" key="2" />
+		</sortItems>
+		<filterItems>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

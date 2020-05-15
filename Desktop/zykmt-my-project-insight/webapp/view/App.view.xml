@@ -1,0 +1,14 @@
+<mvc:View
+	controllerName="zymkt.my.project.insigth.ZYKMT_MY_PROJECT_INSIGHT.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<Shell>
+	<App
+		id="app"
+		busy="{appView>/busy}"
+		busyIndicatorDelay="{appView>/delay}"/>
+	</Shell>
+
+</mvc:View>
